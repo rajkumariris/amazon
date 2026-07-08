@@ -1,6 +1,7 @@
 package com.db.amazon.product.service;
 
 import com.db.amazon.product.Dtos.ProductRequestDto;
+import com.db.amazon.product.Dtos.ProductResponseDto;
 import com.db.amazon.product.Repository.ProductRepository;
 import com.db.amazon.product.models.Brand;
 import com.db.amazon.product.models.Category;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -42,4 +45,24 @@ public class ProductServiceImpl implements ProductService {
 
             productRepository.save(product);
     }
+
+    @Override
+    public List<ProductResponseDto> getAllProduct() {
+       List<Product> products= productRepository.findAll();
+    List<ProductResponseDto> productResponseDtoList = new ArrayList<>();
+       for(Product product: products) {
+           ProductResponseDto productResponseDto = new ProductResponseDto();
+           productResponseDto.setName(product.getName());
+           productResponseDto.setDescription(product.getDescription());
+           productResponseDto.setPrice(product.getPrice());
+           productResponseDto.setImagedata(product.getImageName());
+           String catName = product.getCategory().getName();
+           productResponseDto.setCategory(catName);
+           productResponseDto.setBrand(product.getBrand().getName());
+           productResponseDtoList.add(productResponseDto);
+       }
+        return productResponseDtoList;
+    }
+
+
 }

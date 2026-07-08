@@ -25,10 +25,11 @@ public class Product {
         @Column(columnDefinition = "LONGBLOB")
         private byte[] imageData;
         private int stockQuantity;
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.PERSIST)
+
         private Brand brand;
 
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.PERSIST)
         private Category category;
         private String weight;
 
