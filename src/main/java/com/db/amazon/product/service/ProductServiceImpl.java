@@ -85,8 +85,21 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductResponseDto> filterByCategory(String category) {
 
-        List<Product> products = productRepository.findProductwithCategory();
-        return List.of();
+        List<Product> products = productRepository.findProductwithCategory(category);
+
+        List<ProductResponseDto> categoryProductDto = new ArrayList<>();
+
+        for (int i =0;i<products.size();i++){
+
+            ProductResponseDto productDto =new ProductResponseDto();
+            productDto.setName(products.get(i).getName());
+            productDto.setBrand(products.get(i).getBrand().getName());
+            productDto.setDescription(products.get(i).getDescription());
+            productDto.setCategory(products.get(i).getCategory().getName());
+
+            categoryProductDto.add(productDto);
+        }
+        return categoryProductDto ;
     }
 
 

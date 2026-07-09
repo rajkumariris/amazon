@@ -46,9 +46,10 @@ public class ProductController {
     }
 
     @GetMapping("/category")
-    public void filterByCategory(@RequestParam String category){
+    public List<ProductResponseDto> filterByCategory(@RequestParam String category){
 
-        productService.filterByCategory(category);
+       List<ProductResponseDto> products=  productService.filterByCategory(category);
+        return products;
     }
 
     public void productDetails(){

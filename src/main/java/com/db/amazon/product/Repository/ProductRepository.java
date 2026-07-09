@@ -24,7 +24,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
 
-    @Query(" SELECT p from Product p where lower(p.category) = lower(:category) ")
+    @Query(" SELECT p from Product p join Category c on p.category.id = c.id where lower(c.name) = lower(:category) ")
     List<Product> findProductwithCategory(@Param("category") String category);
 
 }
