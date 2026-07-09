@@ -82,5 +82,12 @@ public class ProductServiceImpl implements ProductService {
        return searchProductsDtos;
     }
 
+    @Override
+    public List<ProductResponseDto> filterByCategory(String category) {
+
+        List<Product> products = productRepository.findProductwithCategory();
+        return List.of();
+    }
+
 
 }

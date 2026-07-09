@@ -14,4 +14,6 @@ public interface ProductService {
     public List<ProductResponseDto> getAllProduct();
 
     public List<ProductResponseDto> searchProduct(String keyword, String description);
+
+    public List<ProductResponseDto> filterByCategory(String category);
 }

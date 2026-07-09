@@ -45,8 +45,10 @@ public class ProductController {
        return productService.searchProduct(keyword, description);
     }
 
-    public void filterByCategory(){
+    @GetMapping("/category")
+    public void filterByCategory(@RequestParam String category){
 
+        productService.filterByCategory(category);
     }
 
     public void productDetails(){

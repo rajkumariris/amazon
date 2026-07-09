@@ -23,4 +23,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product>searchproduct(@Param("keyword") String keyword , @Param("description") String description);
 
 
+
+    @Query(" SELECT p from Product p where lower(p.category) = lower(:category) ")
+    List<Product> findProductwithCategory(@Param("category") String category);
+
 }
