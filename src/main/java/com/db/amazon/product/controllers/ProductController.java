@@ -39,5 +39,22 @@ public class ProductController {
     public void updateProduct(){
 
     }
+
+    @GetMapping("/search")
+    public List<ProductResponseDto> searchProduct(@RequestParam String keyword, @RequestParam(required = false) String description){
+       return productService.searchProduct(keyword, description);
+    }
+
+    @GetMapping("/category")
+    public void filterByCategory(@RequestParam String category){
+
+        productService.filterByCategory(category);
+    }
+
+    public void productDetails(){
+
+    }
+
+
 }
 

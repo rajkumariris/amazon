@@ -64,5 +64,30 @@ public class ProductServiceImpl implements ProductService {
         return productResponseDtoList;
     }
 
+    @Override
+    public List<ProductResponseDto> searchProduct(String keyword, String description) {
+//       List<Product> searchProducts =  productRepository.findByNameContainingIgnoreCase(keyword);
+        List<Product> searchProducts = productRepository.searchproduct(keyword, description);
+       List<ProductResponseDto> searchProductsDtos = new ArrayList<>();
+       for (int i =0;i<searchProducts.size();i++){
+
+           ProductResponseDto productDto =new ProductResponseDto();
+           productDto.setName(searchProducts.get(i).getName());
+           productDto.setBrand(searchProducts.get(i).getBrand().getName());
+           productDto.setDescription(searchProducts.get(i).getDescription());
+
+           searchProductsDtos.add(productDto);
+       }
+
+       return searchProductsDtos;
+    }
+
+    @Override
+    public List<ProductResponseDto> filterByCategory(String category) {
+
+        List<Product> products = productRepository.findProductwithCategory();
+        return List.of();
+    }
+
 
 }
