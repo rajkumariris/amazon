@@ -26,7 +26,9 @@ public class ProductController {
         productService.createProduct(productRequest, image);
     }
 
-    public void getProduct(){};
+    public void getProduct(){
+
+    };
 
     @GetMapping("/getAll")
     public List<ProductResponseDto> getAllProduct(){
@@ -52,8 +54,11 @@ public class ProductController {
         return products;
     }
 
-    public void productDetails(){
+    @GetMapping("/{id}")
+    public ProductResponseDto productDetails(@PathVariable  Long id){
 
+        ProductResponseDto detailedProduct = productService.getDetails(id);
+        return detailedProduct;
     }
 
 

@@ -16,4 +16,6 @@ public interface ProductService {
     public List<ProductResponseDto> searchProduct(String keyword, String description);
 
     public List<ProductResponseDto> filterByCategory(String category);
+
+    public ProductResponseDto getDetails(Long id);
 }

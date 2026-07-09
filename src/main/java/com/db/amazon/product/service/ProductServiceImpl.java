@@ -103,4 +103,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    @Override
+    public ProductResponseDto getDetails(Long id) {
+       Product product=  productRepository.findById(id).orElseThrow(()-> new RuntimeException("Product not found"));
+       ProductResponseDto product1 = new ProductResponseDto();
+       product1.setName(product.getName());
+       product1.setPrice(product.getPrice());
+       product1.setStockQuantity(product.getStockQuantity());
+       product1.setDescription(product.getDescription());
+       product1.setBrand(product.getBrand().getName());
+         product1.setCategory(product.getCategory().getName());
+       return product1;
+    }
+
+
 }
