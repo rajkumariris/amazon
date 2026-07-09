@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
            productResponseDto.setName(product.getName());
            productResponseDto.setDescription(product.getDescription());
            productResponseDto.setPrice(product.getPrice());
-           productResponseDto.setImagedata(product.getImageName());
+           productResponseDto.setImagedata(product.getImageData());
            String catName = product.getCategory().getName();
            productResponseDto.setCategory(catName);
            productResponseDto.setBrand(product.getBrand().getName());

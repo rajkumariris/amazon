@@ -2,6 +2,7 @@ package com.db.amazon.product.controllers;
 
 
 import com.db.amazon.product.Dtos.ProductRequestDto;
+import com.db.amazon.product.Dtos.ProductResponseDto;
 import com.db.amazon.product.models.Product;
 import com.db.amazon.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ProductController {
     public void getProduct(){};
 
     @GetMapping("/getAll")
-    public List<Product> getAllProduct(){
+    public List<ProductResponseDto> getAllProduct(){
         return productService.getAllProduct();
     }
     public void deleteProduct(){

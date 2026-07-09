@@ -16,5 +16,5 @@ public class ProductResponseDto {
 
     private String category;
     private String weight;
-    private String imagedata;
+    private byte[] imagedata;
 }
