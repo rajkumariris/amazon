@@ -15,11 +15,14 @@ public class cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(
+            mappedBy = "cart",
+            cascade = CascadeType.ALL,
+    orphanRemoval = true)
+    List<cartItem> Items = new ArrayList<>();
 
-
-    private List<cartItem> items = new ArrayList<>();
-
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     private Double totalAmount;
